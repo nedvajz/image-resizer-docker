@@ -5,15 +5,16 @@ from flask import Flask, send_file, request
 
 app = Flask(__name__)
 
-@app.route('/<filename>')
-def resize_image(filename):
+@app.route('/')
+def resize_image():
     image_url = request.args.get('url')
+    desired_width = int(request.args.get('w', 1024))
+
     if image_url:
         response = requests.get(image_url)
         image = Image.open(BytesIO(response.content))
 
-        # Calculate the new width and height while maintaining the aspect ratio
-        desired_width = 1024
+        # Calculate the new height while maintaining the aspect ratio
         aspect_ratio = float(image.width) / image.height
         desired_height = int(desired_width / aspect_ratio)
 
