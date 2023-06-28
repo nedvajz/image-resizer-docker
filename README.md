@@ -12,12 +12,16 @@ This is a simple image resizer service that accepts a URL to an image and resize
 
 To build the Docker image, run the following command:
 
-`docker build -t image-resizer .`
+`make build`
 
 ### Run the Docker Container
 
 To run the Docker container and start the image resizer service, use the following command:
 
+#### ease: 
+`make run`
+
+#### advanced:  
 `docker run -d -p 8111:8111 --name image-resizer-container image-resizer`
 
 The image resizer service will now be accessible at `http://localhost:8111/`.
