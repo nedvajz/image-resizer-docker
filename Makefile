@@ -4,8 +4,12 @@
 help:
 	@echo "Available targets:"
 	@echo "  update          Stop, remove, and rebuild the Docker container."
+	@echo "  build           Reuild the Docker container."
 	@echo "  run             Run the Docker container."
 	@echo "  help            Show this help message."
+
+build:
+	docker build -t image-resizer .
 
 update:
 	docker stop image-resizer-container || true
